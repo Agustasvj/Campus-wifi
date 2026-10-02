@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy WiFi Package</title>
+
+  <!-- Font: Outfit (falls back to system font if offline) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="student-page">
+  <div class="app">
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+        </span>
+        <span>Campus WiFi<small>Student portal</small></span>
+      </div>
+      <span class="topbar-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Secure campus network
+      </span>
+    </header>
+
+    <main class="container">
+
+      <!-- Hero banner -->
+      <section class="hero">
+        <div>
+          <h1>Student WiFi Packages</h1>
+          <p>Select a package and complete your purchase</p>
+
+          <div class="hero-features">
+            <span class="feature-chip">
+              <span class="chip-icon orange">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </span>
+              Instant voucher
+            </span>
+            <span class="feature-chip">
+              <span class="chip-icon green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              </span>
+              Live updates from admin
+            </span>
+            <span class="feature-chip">
+              <span class="chip-icon sky">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              Flexible durations
+            </span>
+          </div>
+        </div>
+
+        <!-- Signal illustration -->
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 200 160">
+            <circle cx="100" cy="100" r="78" fill="rgba(255,255,255,0.10)"/>
+            <path class="arc arc-1" d="M40 90 A78 78 0 0 1 160 90" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="11" stroke-linecap="round"/>
+            <path class="arc arc-2" d="M61.6 108 A50 50 0 0 1 138.4 108" fill="none" stroke="#ffffff" stroke-opacity="0.8" stroke-width="11" stroke-linecap="round"/>
+            <path class="arc arc-3" d="M81.6 124.6 A24 24 0 0 1 118.4 124.6" fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round"/>
+            <circle cx="100" cy="140" r="9" fill="#f6893b"/>
+            <circle cx="166" cy="40" r="7" fill="#2fb871"/>
+            <circle cx="30" cy="52" r="5" fill="#f6893b" opacity="0.85"/>
+            <circle cx="178" cy="120" r="4" fill="#ffffff" opacity="0.7"/>
+          </svg>
+        </div>
+      </section>
+
+      <!-- Live messages from Admin will appear here (shown as pop-up toasts) -->
+      <div id="admin-messages" class="admin-messages"></div>
+
+      <div class="section-head">
+        <h2>Choose a plan</h2>
+        <p>Pay once, get your voucher code instantly</p>
+      </div>
+
+      <div id="packages" class="packages-grid">
+        <!-- Packages loaded by JavaScript -->
+      </div>
+
+      <!-- Purchase Form -->
+      <div id="purchase-form" class="form-card" style="display:none;">
+        <div class="form-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg>
+        </div>
+        <h2>Complete Purchase</h2>
+        <p>Selected: <strong id="selected-name"></strong></p>
+
+        <label for="studentName">Your Full Name</label>
+        <div class="input-group">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <input type="text" id="studentName" placeholder="e.g. John Doe" required>
+        </div>
+
+        <label for="studentId">Phone number</label>
+        <div class="input-group">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="12" r="2"/><path d="M14 10h4"/><path d="M14 14h4"/></svg>
+          <input type="text" id="studentId" placeholder="e.g. 0721345678" required>
+        </div>
+
+        <div class="form-actions">
+          <button id="confirm-btn">Confirm Purchase</button>
+          <button id="cancel-btn" class="secondary">Cancel</button>
+        </div>
+      </div>
+
+      <!-- Success Message -->
+      <div id="success-message" class="success" style="display:none;"></div>
+    </main>
+  </div>
+
+  <script>
+    let selectedPackageId = null;
+
+    // ========== WebSocket for receiving Admin messages ==========
+    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const socket = new WebSocket(`${protocol}//${window.location.host}`);
+
+    socket.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+
+      if (data.type === "ADMIN_MESSAGE") {
+        showAdminMessage(data.message);
+      }
+    };
+
+    function showAdminMessage(message) {
+      const box = document.getElementById('admin-messages');
+      const div = document.createElement('div');
+      div.className = 'admin-msg';
+      div.innerHTML = `<strong>Admin:</strong> ${message}`;
+      box.prepend(div);
+
+      // Auto remove after 12 seconds
+      setTimeout(() => div.remove(), 12000);
+    }
+    // ===========================================================
+
+    // 1. Load packages
+    async function loadPackages() {
+      const res = await fetch('/api/packages');
+      const packages = await res.json();
+
+      const container = document.getElementById('packages');
+      container.innerHTML = '';
+
+      packages.forEach(pkg => {
+        const card = document.createElement('div');
+        card.className = 'package-card';
+        card.innerHTML = `
+          <h3>${pkg.name}</h3>
+          <p class="price">KSh ${pkg.price}</p>
+          <p>${pkg.duration}</p>
+          <button onclick="selectPackage(${pkg.id}, '${pkg.name}')">Buy Now</button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // 2. Select package
+    function selectPackage(id, name) {
+      selectedPackageId = id;
+      document.getElementById('selected-name').textContent = name;
+      document.getElementById('purchase-form').style.display = 'block';
+      document.getElementById('packages').style.display = 'none';
+      document.getElementById('success-message').style.display = 'none';
+    }
+
+    // 3. Cancel
+    document.getElementById('cancel-btn').addEventListener('click', () => {
+      document.getElementById('purchase-form').style.display = 'none';
+      document.getElementById('packages').style.display = 'grid';
+    });
+
+    // 4. Confirm Purchase
+    document.getElementById('confirm-btn').addEventListener('click', async () => {
+      const studentName = document.getElementById('studentName').value.trim();
+      const studentId = document.getElementById('studentId').value.trim();
+
+      if (!studentName || !studentId) {
+        alert("Please fill in both fields");
+        return;
+      }
+
+      const res = await fetch('/api/purchase', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          studentName,
+          studentId,
+          packageId: selectedPackageId
+        })
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        // Hide form and packages
+        document.getElementById('purchase-form').style.display = 'none';
+        document.getElementById('packages').style.display = 'none';
+
+        // Show success message with "You are logged in!"
+        const successDiv = document.getElementById('success-message');
+        successDiv.style.display = 'block';
+        successDiv.innerHTML = `
+          <h2>You are logged in!</h2>
+          <p>Thank you, <strong>${studentName}</strong>.</p>
+          <p>Package: <strong>${data.purchase.packageName}</strong></p>
+          <p>Amount Paid: <strong>KSh ${data.purchase.price}</strong></p>
+          <p style="margin-top:15px;">Your Voucher Code:</p>
+          <p style="font-size:1.6rem; font-weight:bold; color:#2b6cb0; letter-spacing:1px;">
+            ${data.purchase.voucher}
+          </p>
+          <button onclick="location.reload()" style="margin-top:20px;">
+            Buy Another Package
+          </button>
+        `;
+      } else {
+        alert(data.error || "Something went wrong");
+      }
+    });
+
+    // Start
+    loadPackages();
+  </script>
+</body>
+</html>
