@@ -1,15 +1,12 @@
-// ======================================================
-//  WiFi Package Server - Full Working Version
-// ======================================================
+
+//  WiFi Package Server
 
 const express = require('express');
 const http = require('http');
 const path = require('path');
 const cors = require('cors');
 
-// ------------------------------------------------------
-// WEBSOCKET IMPLEMENTATION - CLEAR STEP BY STEP
-// ------------------------------------------------------
+// WEBSOCKET IMPLEMENTATION 
 
 // Step 1: Import the WebSocket library
 const WebSocket = require('ws');
@@ -21,6 +18,7 @@ const server = http.createServer(app);
 // Step 3: Create the WebSocket server and attach it to the HTTP server
 const wss = new WebSocket.Server({ server });
 
+//confirm the websocket server is ready
 console.log("WebSocket server is ready");
 
 // Step 4: When a new client connects (Student or Admin)
@@ -73,11 +71,6 @@ function broadcast(data) {
   });
 }
 
-// ------------------------------------------------------
-// END OF WEBSOCKET SECTION
-// ------------------------------------------------------
-
-
 // ---------- Simple in-memory database ----------
 let packages = [
   { id: 1, name: "1 Day Pass",   price: 50,  duration: "24 hours" },
@@ -114,7 +107,7 @@ app.post('/api/purchase', (req, res) => {
     return res.status(404).json({ error: "Package not found" });
   }
 
-  // Generate a random dummy voucher (example: WIFI-K7P2X9)
+  // Generate a random dummy voucher
   const voucher = "WIFI-" + Math.random().toString(36).substring(2, 8).toUpperCase();
 
   const newPurchase = {
@@ -124,7 +117,7 @@ app.post('/api/purchase', (req, res) => {
     packageName: selectedPackage.name,
     price: selectedPackage.price,
     duration: selectedPackage.duration,
-    voucher: voucher,                     // ← Important: voucher is included
+    voucher: voucher,                    
     purchasedAt: new Date().toLocaleString()
   };
 
